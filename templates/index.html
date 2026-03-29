@@ -7,6 +7,8 @@
     <meta name="description" content="Portfolio profissional de desenvolvedor web, projetos, habilidades e contato." />
     <title>EmxCoder | Desenvolvedor Multiplataforma</title>
     <link rel="stylesheet" href="/static/style.css">
+    <script src="http://unpkg.com/htmx.org@1.9.10"></script>
+
 </head>
 
 <body>
@@ -14,7 +16,7 @@
         <div class="nav-inner">
             <a class="brand" href="#home">
                 <span class="brand-badge">EMX</span>
-                <span>Emanuel</span>
+                <span id="nome">Emanuel</span>
             </a>
             <nav class="nav-links" aria-label="Navegação principal">
                 <a href="#sobre">Sobre</a>
@@ -41,40 +43,42 @@
                     <div class="hero-actions">
                         <a class="btn btn-primary" href="#projetos">Ver projetos</a>
                         <a class="btn btn-secondary" href="#contato">Falar comigo</a>
+                        <button id="vbu" class="btn btn-secondary">Visitar</button>
                     </div>
                 </div>
+            </div>
 
-                <aside class="hero-panel">
-                    <div class="profile-card">
-                        <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap;">
-                            <div class="avatar">YN</div>
-                            <div>
-                                <h3 style="margin:0; font-size:1.35rem;">Emanuel</h3>
-                                <p style="margin:0.25rem 0 0; color:var(--muted);">Desenvolvedor Full-Stack / Backend
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="mini-grid">
-                            <div class="mini-stat">
-                                <strong>10+</strong>
-                                <span>Projetos entregues</span>
-                            </div>
-                            <div class="mini-stat">
-                                <strong>4+</strong>
-                                <span>Anos estudando</span>
-                            </div>
-                            <div class="mini-stat">
-                                <strong>FastAPI</strong>
-                                <span>API principal</span>
-                            </div>
-                            <div class="mini-stat">
-                                <strong>Web e Mobile</strong>
-                                <span>Portfólios e apps</span>
-                            </div>
+            <aside class="hero-panel">
+                <div class="profile-card">
+                    <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap;">
+                        <div class="avatar">YN</div>
+                        <div>
+                            <h3 style="margin:0; font-size:1.35rem;">Emanuel</h3>
+                            <p style="margin:0.25rem 0 0; color:var(--muted);">Desenvolvedor Full-Stack / Backend
+                            </p>
                         </div>
                     </div>
-                </aside>
+
+                    <div class="mini-grid">
+                        <div class="mini-stat">
+                            <strong>10+</strong>
+                            <span>Projetos entregues</span>
+                        </div>
+                        <div class="mini-stat">
+                            <strong>4+</strong>
+                            <span>Anos estudando</span>
+                        </div>
+                        <div class="mini-stat">
+                            <strong>FastAPI</strong>
+                            <span>API principal</span>
+                        </div>
+                        <div class="mini-stat">
+                            <strong>Web e Mobile</strong>
+                            <span>Portfólios e apps</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
             </div>
         </section>
 
@@ -286,10 +290,7 @@
                 ideias.</span>
         </div>
     </footer>
-
-    <script>
-        document.getElementById('year').textContent = new Date().getFullYear();
-    </script>
+    <script src="/static/script.js"></script>
 </body>
 
 </html>

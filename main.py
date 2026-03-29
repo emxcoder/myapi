@@ -5,6 +5,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
 
+
 app = FastAPI()
 
 # Config
@@ -29,9 +30,15 @@ async def home(request: Request):
 async def product():
     productsList = ['Iphone','Ipad','Ipod']
     return productsList
+
 class Model(BaseModel):
     identifier:str = 'base'
 
 @app.get('/devices')
 async def devices(identifier:str):
     return identifier
+
+@app.get('/image')
+def images():
+    
+    print('Clicked')
