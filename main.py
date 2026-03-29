@@ -1,11 +1,15 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
+from fastapi.responses import HTMLResponse
+from pathlib import Path
 
 app = FastAPI()
 
-@app.get('/')
-def main():
-    return {'message': 'Hello World'}
+HTML_FILE = Path('page/index.html')
+
+@app.get('/',response_class=HTMLResponse)
+def home():
+    return HTML_FILE.read_text(encoding='utf-8')
 
 @app.get('/products')
 async def product():

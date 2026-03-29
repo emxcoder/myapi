@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Portfolio profissional de desenvolvedor web, projetos, habilidades e contato." />
+    <title>Seu Nome | Desenvolvedor Web</title>
+    <style>
+        :root {
+            --bg: #0b1220;
+            --bg-soft: #111a2e;
+            --card: rgba(17, 26, 46, 0.82);
+            --card-2: rgba(255, 255, 255, 0.04);
+            --text: #e8eefc;
+            --muted: #a9b4d0;
+            --accent: #6ea8fe;
+            --accent-2: #7c5cff;
+            --border: rgba(255, 255, 255, 0.10);
+            --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+            --radius: 24px;
+            --radius-sm: 16px;
+            --max: 1180px;
+            --container: min(var(--max), calc(100% - 2rem));
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at top left, rgba(124, 92, 255, 0.18), transparent 32%),
+                radial-gradient(circle at top right, rgba(110, 168, 254, 0.16), transparent 28%),
+                linear-gradient(180deg, #08101d 0%, #0b1220 100%);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        button {
+            font: inherit;
+        }
+
+        .container {
+            width: var(--container);
+            margin: 0 auto;
+        }
+
+        .section {
+            padding: 88px 0;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 28px;
+        }
+
+        .section-title h2 {
+            margin: 0;
+            font-size: clamp(1.6rem, 2.2vw, 2.4rem);
+            letter-spacing: -0.03em;
+        }
+
+        .section-title p {
+            margin: 0;
+            color: var(--muted);
+            max-width: 58ch;
+        }
+
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            backdrop-filter: blur(14px);
+            background: rgba(8, 16, 29, 0.58);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .nav-inner {
+            width: var(--container);
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 76px;
+            gap: 1rem;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+        }
+
+        .brand-badge {
+            width: 42px;
+            height: 42px;
+            border-radius: 14px;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            box-shadow: 0 12px 30px rgba(110, 168, 254, 0.25);
+            font-weight: 900;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            color: var(--muted);
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+        }
+
+        .hero {
+            padding: 78px 0 48px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .hero-copy {
+            padding: 28px 0;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            padding: 0.45rem 0.8rem;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            color: var(--muted);
+            background: rgba(255, 255, 255, 0.03);
+            margin-bottom: 1rem;
+            width: fit-content;
+        }
+
+        .eyebrow-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            box-shadow: 0 0 0 5px rgba(110, 168, 254, 0.12);
+        }
+
+        .hero h1 {
+            margin: 0;
+            font-size: clamp(2.6rem, 6vw, 4.8rem);
+            line-height: 1.04;
+            letter-spacing: -0.06em;
+            max-width: 12ch;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, #ffffff 0%, #a9c7ff 40%, #7c5cff 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero p.lead {
+            margin: 1.25rem 0 0;
+            max-width: 62ch;
+            color: var(--muted);
+            font-size: 1.05rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 0.9rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.55rem;
+            padding: 0.95rem 1.25rem;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            font-weight: 700;
+            transition: transform .2s ease, border-color .2s ease, background .2s ease;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            color: white;
+            border-color: transparent;
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--text);
+        }
+
+        .hero-panel {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 1.2rem;
+        }
+
+        .profile-card {
+            background: linear-gradient(180deg, rgba(110, 168, 254, 0.10), rgba(124, 92, 255, 0.08));
+            border: 1px solid rgba(255, 255, 255, 0.10);
+            border-radius: calc(var(--radius) - 6px);
+            padding: 1.2rem;
+            display: grid;
+            gap: 1rem;
+        }
+
+        .avatar {
+            width: 90px;
+            height: 90px;
+            border-radius: 24px;
+            background: linear-gradient(135deg, rgba(110, 168, 254, 0.9), rgba(124, 92, 255, 0.9));
+            display: grid;
+            place-items: center;
+            font-size: 2rem;
+            font-weight: 900;
+            box-shadow: 0 18px 40px rgba(110, 168, 254, 0.25);
+        }
+
+        .mini-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.85rem;
+        }
+
+        .mini-stat {
+            padding: 0.95rem;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .mini-stat strong {
+            display: block;
+            font-size: 1.3rem;
+            letter-spacing: -0.04em;
+        }
+
+        .mini-stat span {
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            box-shadow: var(--shadow);
+            padding: 1.25rem;
+        }
+
+        .card h3 {
+            margin: 0 0 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .card p {
+            margin: 0;
+            color: var(--muted);
+        }
+
+        .pill-list {
+            display: flex;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .pill {
+            padding: 0.55rem 0.8rem;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #d8e2ff;
+            font-size: 0.92rem;
+        }
+
+        .project-card {
+            display: grid;
+            gap: 1rem;
+            height: 100%;
+        }
+
+        .project-top {
+            display: flex;
+            align-items: start;
+            justify-content: space-between;
+            gap: 0.8rem;
+        }
+
+        .project-badge {
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            background: rgba(110, 168, 254, 0.12);
+            color: #cfe0ff;
+            border: 1px solid rgba(110, 168, 254, 0.18);
+            font-size: 0.85rem;
+            white-space: nowrap;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-top: 0.25rem;
+        }
+
+        .link-inline {
+            color: #cfe0ff;
+            font-weight: 700;
+        }
+
+        .link-inline:hover {
+            text-decoration: underline;
+        }
+
+        .timeline {
+            display: grid;
+            gap: 0.9rem;
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .timeline-item:last-child {
+            border-bottom: 0;
+        }
+
+        .timeline-item .when {
+            color: #c0c9e7;
+            font-weight: 700;
+        }
+
+        .timeline-item .what {
+            color: var(--muted);
+        }
+
+        .contact-box {
+            display: grid;
+            gap: 1rem;
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(180deg, rgba(110, 168, 254, 0.11), rgba(124, 92, 255, 0.08));
+        }
+
+        .footer {
+            padding: 28px 0 44px;
+            color: var(--muted);
+            text-align: center;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 960px) {
+
+            .hero-grid,
+            .grid-3,
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-item {
+                grid-template-columns: 1fr;
+                gap: 0.25rem;
+            }
+
+            .section-title {
+                align-items: start;
+                flex-direction: column;
+            }
+
+            .nav-inner {
+                flex-direction: column;
+                padding: 1rem 0;
+            }
+
+            .hero {
+                padding-top: 44px;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .mini-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                max-width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .hero-actions {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="nav">
+        <div class="nav-inner">
+            <a class="brand" href="#home">
+                <span class="brand-badge">YN</span>
+                <span>Seu Nome</span>
+            </a>
+            <nav class="nav-links" aria-label="Navegação principal">
+                <a href="#sobre">Sobre</a>
+                <a href="#habilidades">Habilidades</a>
+                <a href="#projetos">Projetos</a>
+                <a href="#contato">Contato</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="home">
+        <section class="hero">
+            <div class="container hero-grid">
+                <div class="hero-copy">
+                    <div class="eyebrow"><span class="eyebrow-dot"></span> Desenvolvedor web • FastAPI • Soluções
+                        modernas</div>
+                    <h1>Construo <span>produtos digitais</span> que resolvem problemas reais.</h1>
+                    <p class="lead">
+                        Sou um desenvolvedor focado em criar aplicações rápidas, claras e confiáveis.
+                        Transformo ideias em interfaces e sistemas prontos para uso, com atenção a performance,
+                        experiência do usuário e manutenção.
+                    </p>
+                    <div class="hero-actions">
+                        <a class="btn btn-primary" href="#projetos">Ver projetos</a>
+                        <a class="btn btn-secondary" href="#contato">Falar comigo</a>
+                    </div>
+                </div>
+
+                <aside class="hero-panel">
+                    <div class="profile-card">
+                        <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap;">
+                            <div class="avatar">YN</div>
+                            <div>
+                                <h3 style="margin:0; font-size:1.35rem;">Seu Nome</h3>
+                                <p style="margin:0.25rem 0 0; color:var(--muted);">Desenvolvedor Full-Stack / Backend
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="mini-grid">
+                            <div class="mini-stat">
+                                <strong>10+</strong>
+                                <span>Projetos entregues</span>
+                            </div>
+                            <div class="mini-stat">
+                                <strong>4+</strong>
+                                <span>Anos estudando</span>
+                            </div>
+                            <div class="mini-stat">
+                                <strong>FastAPI</strong>
+                                <span>API principal</span>
+                            </div>
+                            <div class="mini-stat">
+                                <strong>Web</strong>
+                                <span>Portfólios e apps</span>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <section id="sobre" class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Sobre mim</h2>
+                    <p>Use esta parte para contar sua história de forma objetiva e com foco no valor que você entrega.
+                    </p>
+                </div>
+
+                <div class="grid-2">
+                    <div class="card">
+                        <h3>Quem sou</h3>
+                        <p>
+                            Sou um desenvolvedor apaixonado por construir sistemas úteis, com boa arquitetura e
+                            experiência fluida.
+                            Gosto de trabalhar com backend, integrações de API, autenticação, automação e interfaces web
+                            limpas.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h3>No que eu ajudo</h3>
+                        <p>
+                            Ajudo a transformar ideias em soluções digitais funcionais, desde páginas de apresentação
+                            até painéis, sistemas internos e APIs.
+                            Meu foco é entregar algo bonito, prático e fácil de evoluir.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="habilidades" class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Habilidades</h2>
+                    <p>Troque, adicione ou remova conforme o seu perfil real.</p>
+                </div>
+
+                <div class="grid-3">
+                    <div class="card">
+                        <h3>Backend</h3>
+                        <p>FastAPI, Python, autenticação, APIs REST, validação, integrações, banco de dados.</p>
+                        <div class="pill-list">
+                            <span class="pill">FastAPI</span>
+                            <span class="pill">Python</span>
+                            <span class="pill">REST</span>
+                            <span class="pill">OAuth</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Frontend</h3>
+                        <p>HTML, CSS, layouts responsivos, componentes reutilizáveis e páginas com boa apresentação.</p>
+                        <div class="pill-list">
+                            <span class="pill">HTML</span>
+                            <span class="pill">CSS</span>
+                            <span class="pill">JavaScript</span>
+                            <span class="pill">Responsive</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Ferramentas</h3>
+                        <p>Git, Docker, SQLite/PostgreSQL, deploy, documentação, testes e organização de projetos.</p>
+                        <div class="pill-list">
+                            <span class="pill">Git</span>
+                            <span class="pill">Docker</span>
+                            <span class="pill">PostgreSQL</span>
+                            <span class="pill">Deploy</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projetos" class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Projetos em destaque</h2>
+                    <p>Coloque aqui os projetos que melhor mostram sua capacidade. Priorize impacto, clareza e
+                        resultados.</p>
+                </div>
+
+                <div class="grid-3">
+                    <article class="card project-card">
+                        <div class="project-top">
+                            <div>
+                                <h3>AppleVault</h3>
+                                <p>App para organização e gestão de conteúdo com foco em produtividade.</p>
+                            </div>
+                            <span class="project-badge">FastAPI</span>
+                        </div>
+                        <p>
+                            Descreva o problema resolvido, sua contribuição e o diferencial do projeto. Use números ou
+                            impacto sempre que possível.
+                        </p>
+                        <div class="pill-list">
+                            <span class="pill">API</span>
+                            <span class="pill">Auth</span>
+                            <span class="pill">UI limpa</span>
+                        </div>
+                        <div class="project-links">
+                            <a class="link-inline" href="#">Ver demo</a>
+                            <a class="link-inline" href="#">Ver código</a>
+                        </div>
+                    </article>
+
+                    <article class="card project-card">
+                        <div class="project-top">
+                            <div>
+                                <h3>Painel Administrativo</h3>
+                                <p>Dashboard para operações internas com métricas e gestão.</p>
+                            </div>
+                            <span class="project-badge">Web App</span>
+                        </div>
+                        <p>
+                            Explique como o projeto ajudou usuários ou negócios. Mostre foco em organização, velocidade
+                            e confiabilidade.
+                        </p>
+                        <div class="pill-list">
+                            <span class="pill">Dashboard</span>
+                            <span class="pill">CRUD</span>
+                            <span class="pill">Relatórios</span>
+                        </div>
+                        <div class="project-links">
+                            <a class="link-inline" href="#">Ver demo</a>
+                            <a class="link-inline" href="#">Ver código</a>
+                        </div>
+                    </article>
+
+                    <article class="card project-card">
+                        <div class="project-top">
+                            <div>
+                                <h3>Landing Page de Produto</h3>
+                                <p>Site de apresentação para captar interesse e direcionar contatos.</p>
+                            </div>
+                            <span class="project-badge">Landing</span>
+                        </div>
+                        <p>
+                            Ideal para mostrar seu senso visual e sua capacidade de comunicar valor rapidamente para
+                            clientes ou empresas.
+                        </p>
+                        <div class="pill-list">
+                            <span class="pill">Conversão</span>
+                            <span class="pill">SEO básico</span>
+                            <span class="pill">Responsivo</span>
+                        </div>
+                        <div class="project-links">
+                            <a class="link-inline" href="#">Ver demo</a>
+                            <a class="link-inline" href="#">Ver código</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Como trabalho</h2>
+                    <p>Isso ajuda a transmitir processo, maturidade e confiança.</p>
+                </div>
+
+                <div class="card timeline">
+                    <div class="timeline-item">
+                        <div class="when">01. Descoberta</div>
+                        <div class="what">Entendo o objetivo, o público e a dor principal antes de começar a construir.
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="when">02. Estrutura</div>
+                        <div class="what">Defino arquitetura, componentes, rotas e a experiência do usuário de forma
+                            simples.</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="when">03. Entrega</div>
+                        <div class="what">Desenvolvo, testo e deixo tudo pronto para publicação, manutenção e evolução.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contato" class="section">
+            <div class="container">
+                <div class="card contact-box">
+                    <h2 style="margin:0; font-size:clamp(1.5rem, 2.2vw, 2.2rem);">Vamos construir algo juntos?</h2>
+                    <p style="margin:0; color:var(--muted); max-width:60ch; margin-inline:auto;">
+                        Este espaço é perfeito para colocar e-mail, WhatsApp, GitHub, LinkedIn ou qualquer link que você
+                        quer direcionar pessoas.
+                    </p>
+                    <div class="hero-actions" style="justify-content:center;">
+                        <a class="btn btn-primary" href="mailto:seuemail@exemplo.com">Enviar e-mail</a>
+                        <a class="btn btn-secondary" href="https://github.com/" target="_blank"
+                            rel="noreferrer">GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <span>© <span id="year"></span> Seu Nome. Desenvolvido com foco em clareza, performance e boas
+                ideias.</span>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>
