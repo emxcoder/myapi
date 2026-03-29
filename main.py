@@ -1,22 +1,29 @@
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from pydantic import BaseModel
-from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
-from pathlib import Path
+from fastapi.templating import Jinja2Templates
+
 
 app = FastAPI()
 
 # Config
 app.mount('/static', StaticFiles(directory='static'),name='static')
+templates = Jinja2Templates(directory='templates')
 
 
+# HTML_FILE = Path('templates/index.html')
 
-HTML_FILE = Path('templates/index.html')
-
-@app.get('/',response_class=HTMLResponse)
-async def home():
-    return HTML_FILE.read_text(encoding='utf-8')
+@app.get('/')
+async def home(request: Request):
+    return templates.TemplateResponse(
+        request,
+        'index.html',
+        {
+            'name':'EmxCoder',
+           
+        }
+    )
 
 @app.get('/products')
 async def product():
