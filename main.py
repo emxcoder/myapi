@@ -6,6 +6,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from rembg import remove
 from fastapi.responses import Response
 import datetime
+import os
+os.environ["RMBG_NO_GPU"] = "1"
+
 
 app = FastAPI()
 
