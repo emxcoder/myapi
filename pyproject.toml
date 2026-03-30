@@ -5,7 +5,9 @@ description = "Api for retieve info about apple devices"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
+    "build>=1.4.2",
     "fastapi[standard]>=0.135.2",
+    "numpy>=2.2.6",
     "pydantic>=2.12.5",
     "rembg>=2.0.69",
 ]
