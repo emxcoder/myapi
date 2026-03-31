@@ -7,7 +7,7 @@
     <meta name="description" content="Portfolio profissional de desenvolvedor web, projetos, habilidades e contato." />
     <title>EmxCoder | Desenvolvedor Multiplataforma</title>
     <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}">
-    <link rel="favicon" href="/static//assets/favicon.png" type="image/png">
+    <link rel="favicon" href="/static/assets/favicon.png" type="image/png">
     <link rel="shortcut icon" href="/static/assets/favicon.png" type="image/png">
     <meta name="monetag" content="2767b84530ee3b47858fcb14c1047c59">
 </head>
@@ -21,7 +21,7 @@
     <header class="nav">
         <div class="nav-inner">
             <a class="brand" href="#home">
-                <span class="brand-badge"><img src="/static/favicon.png" alt="EMX"></span>
+                <span class="brand-badge"><img src="{{url_for('static', path='/assets/favicon.png')}}" alt="EMX"></span>
                 <span id="nome">Emanuel</span>
             </a>
             <nav class="nav-links" aria-label="Navegação principal">

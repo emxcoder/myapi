@@ -19,6 +19,7 @@ app.add_middleware(
     allow_headers=['*'],
 )
 
+icon = Image.open('static/assets/favicon.png').tobytes
 
 # Config
 app.mount('/static', StaticFiles(directory='static'),name='static')
@@ -40,7 +41,8 @@ async def home(request: Request):
 
         {
             'name':'EmxCoder',
-            'year':timeToday
+            'year':timeToday,
+            'image':icon
            
         }
     )
