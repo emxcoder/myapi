@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Portfolio profissional de desenvolvedor web, projetos, habilidades e contato." />
     <title>EmxCoder | Desenvolvedor Multiplataforma</title>
-    <link rel="stylesheet" href="/static/style.css">
-    <link rel="favicon" href="/static/favicon.png" type="image/png">
-    <link rel="shortcut icon" href="/static/favicon.png" type="image/png">
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}">
+    <link rel="favicon" href="/static//assets/favicon.png" type="image/png">
+    <link rel="shortcut icon" href="/static/assets/favicon.png" type="image/png">
     <meta name="monetag" content="2767b84530ee3b47858fcb14c1047c59">
 </head>
 
@@ -29,6 +29,7 @@
                 <a href="#habilidades">Habilidades</a>
                 <a href="#projetos">Projetos</a>
                 <a href="#contato">Contato</a>
+                <a href="/remove">Remove Fundo</a>
             </nav>
         </div>
     </header>
@@ -301,7 +302,7 @@
                 ideias.</span>
         </div>
     </footer>
-    <script src="/static/script.js"></script>
+    <script src="/static/js/script.js"></script>
 </body>
 
 </html>

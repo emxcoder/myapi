@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<!--
+	Eventually by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+    <title>EmX CODer</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+</head>
+
+<body class="is-preload">
+
+    <h1>Remover fundo</h1>
+
+    <form action="/removeBg" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" required>
+        <button type="submit">Enviar</button>
+    </form>
+
+    {% if image %}
+    <h2>Resultado:</h2>
+    <img src="{{ image }}" width="300">
+    {% endif %}
+
+
+
+</body>
+
+</html>
