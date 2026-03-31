@@ -19,7 +19,6 @@ app.add_middleware(
     allow_headers=['*'],
 )
 
-icon = Image.open('static/assets/favicon.png').tobytes
 
 # Config
 app.mount('/static', StaticFiles(directory='static'),name='static')
@@ -42,7 +41,6 @@ async def home(request: Request):
         {
             'name':'EmxCoder',
             'year':timeToday,
-            'image':icon
            
         }
     )
@@ -62,7 +60,7 @@ async def removeBGAction(request:Request, file:UploadFile=File(...)):
     contents = await file.read()
 
     input_image = Image.open(io.BytesIO(contents)).convert("RGBA")
-    output_image = await remove(input_image,session=session)
+    output_image = remove(input_image,session=session)
 
 
     output_path = "uploads/output.png"
